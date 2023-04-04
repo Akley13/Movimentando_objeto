@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movimentando objeto</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="funcao.js"></script>
 </head>
+
 <body>
-    <canvas id="elemento"></canvas>
+    <canvas id="elemento" width="500px" height="500px" style="border: 1px solid"></canvas>
+    <script>
+        var canvas = document.getElementById("elemento");
+        var desenhar = canvas.getContext("2d");
+
+        var x = 0;
+        var y = 0;
+        mover();
+
+        document.addEventListener('keydown', function(evento){
+            if(evento.keyCode == 37){
+                x -= 10;
+                mover();
+            }
+            if(evento.keyCode == 39){
+                x += 10;
+                mover();
+            }
+
+            // ===================================
+
+            if(evento.keyCode == 38){
+                y -= 10;
+                mover();
+            }
+            if(evento.keyCode == 40){
+                y += 10;
+                mover();
+            }
+            
+        });
+
+        function mover()
+        {
+            desenhar.clearRect(0, 0, 500, 500);
+            desenhar.fillRect(x, y, 35, 35);
+        }
+    </script>
 </body>
 </html>
